@@ -1,6 +1,6 @@
 import csv
 import sys
-
+#states are people, actions are movies
 from util import Node, StackFrontier, QueueFrontier
 
 # Maps names to a set of corresponding person_ids
@@ -123,10 +123,10 @@ def shortest_path(source, target):
             solution = (actions, cells)
             return
         explored.add(node.state)
-
-        for action, state in neighbors_for_person(source):
-            if not frontier.contains_state(state) and state not in explored:
-                child = Node(state=state, parent = node, action = action)
+        #change this to person_id, and neighor_id?
+        for person_id, movie_id in neighbors_for_person(source):
+            if not frontier.contains_state(movie_id) and movie_id not in explored:
+                child = Node(state=person_id, parent = node, action = movie_id)
                 frontier.add(child)
         
     print(movies_list_target)
