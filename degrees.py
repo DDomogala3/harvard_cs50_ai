@@ -91,17 +91,44 @@ def shortest_path(source, target):
 
     If no possible path, returns None.
     """
-    neighbors_data_source = neighbors_for_person(source)
-    movies_list_source = []
-    for i,j in neighbors_data_source:
-        movies_list_source.append(i)
-    neighbors_data_target = neighbors_for_person(target)
-    movies_list_target = []
-    for i,j in neighbors_data_target:
-        movies_list_target.append(i)
-    start = Node(state = source, parent = None, action = target)
+    num_explored = 0
+    #neighbors_data_source = neighbors_for_person(source)
+    #movies_list_source = []
+    #for i,j in neighbors_data_source:
+   #     movies_list_source.append(i)
+    #neighbors_data_target = neighbors_for_person(target)
+    #movies_list_target = []
+    #for i,j in neighbors_data_target:
+    #    movies_list_target.append(i)
+    start = Node(state = source, parent = None, action = None)
     frontier = QueueFrontier()
     frontier.add(start)
+    explored = set()
+    goal = target
+    while True:
+        if frontier.empty():
+            raise Exception("no solution")
+        #Choose a node from the frontier
+        node = frontier.remove()
+        num_explored += 1
+        if node.state == goal:
+            actions = []
+            cells = []
+            while node.parent is not None:
+                actions.append(node.action)
+                cells.append(node.state)
+                node = node.parent
+            actions.reverse()
+            cells.reverse()
+            solution = (actions, cells)
+            return
+        explored.add(node.state)
+
+        for action, state in neighbors_for_person(source):
+            if not frontier.contains_state(state) and state not in explored:
+                child = Node(state=state, parent = node, action = action)
+                frontier.add(child)
+        
     print(movies_list_target)
     raise NotImplementedError
     
