@@ -105,6 +105,8 @@ def shortest_path(source, target):
     frontier.add(start)
     explored = set()
     goal = target
+    path = []
+    print(goal)
     while True:
         if frontier.empty():
             raise Exception("no solution")
@@ -121,14 +123,38 @@ def shortest_path(source, target):
             actions.reverse()
             cells.reverse()
             solution = (actions, cells)
-            return
+            return solution
+            
         explored.add(node.state)
         #change this to person_id, and neighor_id?
-        for person_id, movie_id in neighbors_for_person(source):
+        for person_id, movie_id in neighbors_for_person(node.state):
             if not frontier.contains_state(movie_id) and movie_id not in explored:
                 child = Node(state=person_id, parent = node, action = movie_id)
                 frontier.add(child)
-        
+                source_path = (child.state, child.action)
+                path.append(source_path)
+                if child.state == target:
+                    print("found")
+                else:
+                    return path
+                #if child.state == goal:
+                #    print(child.state)
+                #child.action = child.action.strip()
+                #target_path = (child.state, child.action)
+                #path.append(target_path)
+                
+                
+        for person_id, movie_id in neighbors_for_person(target):
+            if not frontier.contains_state(movie_id) and movie_id not in explored:
+                child_target = Node(state=person_id, parent = child, action = movie_id)
+                frontier.add(child_target)
+                target_path = (child.state, child_target.action)
+                path.append(target_path)
+                alt_path = []
+                print(path)
+                #return path
+                    
+                    
     print(movies_list_target)
     raise NotImplementedError
     
