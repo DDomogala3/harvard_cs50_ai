@@ -139,16 +139,32 @@ def shortest_path(source, target):
                 explored.add(child.state)
                     #print(explored.state)
                 source_path = (child.action, child.state)
+                child_states = []
+                child_states.append(child.state)
                     #print(child.state)
                     #print(source_path)
+                
+                	
                 path.append(source_path)
                 #return path
-        for i in source_path:
-            print(i)
+        
+        child_state_list = []
         for i,j in path:
-            if j == target:
-                print("found!")
-                print(j)
+        	child_state_list.append(j)
+        	if j == target:
+                   print("found!")
+                   print(j)
+                   print(child_state_list.index(j))
+                
+                	
+        try:
+    		# Find the index of the tuple where the first element is 'Bob'
+    	    index = next(i for i, (state, action) in enumerate(path) if state == target)
+    	    print(f"The index of the tuple containing '{target}' is: {index}")
+        except StopIteration:
+	        print(f"Tuple containing '{target}' not found.")
+        
+                
                             
         node_2 = frontier.remove()
         print(node_2.state)
