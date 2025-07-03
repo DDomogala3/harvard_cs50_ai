@@ -91,71 +91,74 @@ def shortest_path(source, target):
 
     If no possible path, returns None.
     """
+    #from the Duck, for each node check if it's the goal, then add it to the path and keep making nodes
+    
     num_explored = 0
     #neighbors_data_source = neighbors_for_person(source)
-    #movies_list_source = []
-    #for i,j in neighbors_data_source:
-   #     movies_list_source.append(i)
-    #neighbors_data_target = neighbors_for_person(target)
-    #movies_list_target = []
-    #for i,j in neighbors_data_target:
-    #    movies_list_target.append(i)
+    
     start = Node(state = source, parent = None, action = None)
     frontier = QueueFrontier()
     frontier.add(start)
     explored = set()
     goal = target
     path = []
-    print(goal)
-    while True:
+    #print(goal)
+    #the start node is always going to be the source
+    while frontier.empty() == False:
         if frontier.empty():
             raise Exception("no solution")
         #Choose a node from the frontier
         node = frontier.remove()
+        print(node.state)
         num_explored += 1
+    
         if node.state == goal:
+            print("found")
             actions = []
             cells = []
+            return node.state
             while node.parent is not None:
                 actions.append(node.action)
                 cells.append(node.state)
                 node = node.parent
+                print("found")
+                return actions
             actions.reverse()
             cells.reverse()
             solution = (actions, cells)
             return solution
             
         explored.add(node.state)
-        #change this to person_id, and neighor_id?
-        for person_id, movie_id in neighbors_for_person(node.state):
-            if not frontier.contains_state(movie_id) and movie_id not in explored:
+    
+        
+        for movie_id, person_id in neighbors_for_person(source):
+                #print(person_id)
+            if not frontier.contains_state(person_id) and person_id not in explored:
                 child = Node(state=person_id, parent = node, action = movie_id)
                 frontier.add(child)
-                source_path = (child.state, child.action)
+                explored.add(child.state)
+                    #print(explored.state)
+                source_path = (child.action, child.state)
+                    #print(child.state)
+                    #print(source_path)
                 path.append(source_path)
-                if child.state == target:
-                    print("found")
-                else:
-                    return path
-                #if child.state == goal:
-                #    print(child.state)
-                #child.action = child.action.strip()
-                #target_path = (child.state, child.action)
-                #path.append(target_path)
-                
-                
-        for person_id, movie_id in neighbors_for_person(target):
-            if not frontier.contains_state(movie_id) and movie_id not in explored:
-                child_target = Node(state=person_id, parent = child, action = movie_id)
-                frontier.add(child_target)
-                target_path = (child.state, child_target.action)
-                path.append(target_path)
-                alt_path = []
-                print(path)
                 #return path
+        for i in source_path:
+            print(i)
+        for i,j in path:
+            if j == target:
+                print("found!")
+                print(j)
+                            
+        node_2 = frontier.remove()
+        print(node_2.state)
+        return path
+    
+                
+        
                     
                     
-    print(movies_list_target)
+ 
     raise NotImplementedError
     
     
