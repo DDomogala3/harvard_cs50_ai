@@ -112,28 +112,40 @@ def shortest_path(source, target):
         #print(node.state)
         num_explored += 1
     
+        
+    
         if node.state == goal:
             print("found")
             actions = []
             cells = []
             
             first_path = []
-            return node.state
+            #return node.state
+            
             while node.parent is not None:
-                first_tuple = (node.state,node.action)
+                first_tuple = (node.action,node.state)
                 actions.append(node.action)
                 cells.append(node.state)
                 node = node.parent
-                print("found")
-                print(first_tuple)
-                return actions
+                #print("found")
+                #print(first_tuple)
+                #return actions
             actions.reverse()
             cells.reverse()
+            print(actions)
+            print(cells)
             solution = (actions, cells)
             first_path.append(first_tuple)
-            print(first_path)
-            return first_path
             
+            
+            #print(first_path)
+            print(first_path)
+            if len(first_path) == 0:
+                return path
+            else:
+               return first_path
+        
+                 
         explored.add(node.state)
     
         
@@ -144,29 +156,28 @@ def shortest_path(source, target):
                 frontier.add(child)
                 explored.add(child.state)
                     #print(explored.state)
+                path = []
                 source_path = (child.action, child.state)
                 child_states = []
                 child_states.append(child.state)
                     #print(child.state)
                     #print(source_path)
-                
-                    
                 path.append(source_path)
-                #return path
+                
+        #return path    
+                #first_path.append(source_path)
+       
+                #
         
-        child_state_list = []
-        for i,j in path:
-            child_state_list.append(j)
-            #if j == target:
-                    #print("found!")
-                    #print(j)
-                    #print(child_state_list.index(j))
+        
                 
                     
       
         
                 
-                            
+        #node_2 = frontier.remove()
+                  
+                 
         #node_2 = frontier.remove()
         #print(node_2.state)
         #return path
