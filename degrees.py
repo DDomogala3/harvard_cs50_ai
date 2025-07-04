@@ -109,24 +109,30 @@ def shortest_path(source, target):
             raise Exception("no solution")
         #Choose a node from the frontier
         node = frontier.remove()
-        print(node.state)
+        #print(node.state)
         num_explored += 1
     
         if node.state == goal:
             print("found")
             actions = []
             cells = []
+            
+            first_path = []
             return node.state
             while node.parent is not None:
+                first_tuple = (node.state,node.action)
                 actions.append(node.action)
                 cells.append(node.state)
                 node = node.parent
                 print("found")
+                print(first_tuple)
                 return actions
             actions.reverse()
             cells.reverse()
             solution = (actions, cells)
-            return solution
+            first_path.append(first_tuple)
+            print(first_path)
+            return first_path
             
         explored.add(node.state)
     
@@ -144,31 +150,26 @@ def shortest_path(source, target):
                     #print(child.state)
                     #print(source_path)
                 
-                	
+                    
                 path.append(source_path)
                 #return path
         
         child_state_list = []
         for i,j in path:
-        	child_state_list.append(j)
-        	if j == target:
-                   print("found!")
-                   print(j)
-                   print(child_state_list.index(j))
+            child_state_list.append(j)
+            #if j == target:
+                    #print("found!")
+                    #print(j)
+                    #print(child_state_list.index(j))
                 
-                	
-        try:
-    		# Find the index of the tuple where the first element is 'Bob'
-    	    index = next(i for i, (state, action) in enumerate(path) if state == target)
-    	    print(f"The index of the tuple containing '{target}' is: {index}")
-        except StopIteration:
-	        print(f"Tuple containing '{target}' not found.")
+                    
+      
         
                 
                             
-        node_2 = frontier.remove()
-        print(node_2.state)
-        return path
+        #node_2 = frontier.remove()
+        #print(node_2.state)
+        #return path
     
                 
         
