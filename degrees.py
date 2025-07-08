@@ -109,11 +109,15 @@ def shortest_path(source, target):
             raise Exception("no solution")
         #Choose a node from the frontier
         node = frontier.remove()
+        
+        
         #print(node.state)
         num_explored += 1
-    
+        explored_actions = []
+        print(explored)
+        path_dict = {node:node.parent}
         
-    
+        print(path_dict)
         if node.state == goal:
             print("found")
             actions = []
@@ -127,9 +131,12 @@ def shortest_path(source, target):
                 actions.append(node.action)
                 cells.append(node.state)
                 node = node.parent
+                #print(explored)
                 #print("found")
                 #print(first_tuple)
                 #return actions
+                #first_tuple = (node.action, node.state)
+             
             actions.reverse()
             cells.reverse()
             print(actions)
@@ -147,6 +154,7 @@ def shortest_path(source, target):
         
                  
         explored.add(node.state)
+        explored.add(node.action)
     
         
         for movie_id, person_id in neighbors_for_person(source):
@@ -154,7 +162,7 @@ def shortest_path(source, target):
             if not frontier.contains_state(person_id) and person_id not in explored:
                 child = Node(state=person_id, parent = node, action = movie_id)
                 frontier.add(child)
-                explored.add(child.state)
+                
                     #print(explored.state)
                 path = []
                 source_path = (child.action, child.state)
