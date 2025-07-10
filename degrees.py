@@ -104,6 +104,8 @@ def shortest_path(source, target):
     path = []
     #print(goal)
     #the start node is always going to be the source
+    path_dict = {}
+    
     while frontier.empty() == False:
         if frontier.empty():
             raise Exception("no solution")
@@ -111,13 +113,20 @@ def shortest_path(source, target):
         node = frontier.remove()
         
         
-        #print(node.state)
-        num_explored += 1
-        explored_actions = []
-        print(explored)
-        path_dict = {node:node.parent}
         
+        num_explored += 1
+        zero_list = []
+       
+        if parent == None:
+            path_dict[node.state] = (None, node.action)
+        else:
+            path_dict[node.state] = (node.parent.state, node.action)
+        #path_dict.update(nodenode.parent)
         print(path_dict)
+        
+     
+
+        
         if node.state == goal:
             print("found")
             actions = []
@@ -131,6 +140,20 @@ def shortest_path(source, target):
                 actions.append(node.action)
                 cells.append(node.state)
                 node = node.parent
+                
+            path_list = []
+           # while node != start:
+            #    path_list.append(node)
+             #   node = node.parent   
+            #path_list.append(start)
+            print(node.state)
+            print(start.state)
+            while node.state != start.state:
+                path_list.append(node.state)
+                node = path_dict[node][0]
+                path_list.append(start.state)
+                print(path_list)
+            #print(path_list)
                 #print(explored)
                 #print("found")
                 #print(first_tuple)
@@ -143,15 +166,15 @@ def shortest_path(source, target):
             print(cells)
             solution = (actions, cells)
             first_path.append(first_tuple)
-            
-            
+            path_dict.update(first_path)
+            print(path_dict)
             #print(first_path)
             print(first_path)
             if len(first_path) == 0:
                 return path
             else:
                return first_path
-        
+        #return first_path
                  
         explored.add(node.state)
         explored.add(node.action)
