@@ -115,16 +115,17 @@ def shortest_path(source, target):
         
         
         num_explored += 1
-        zero_list = []
-       
-        if parent == None:
+        
+        if node.parent == None:
             path_dict[node.state] = (None, node.action)
+
         else:
             path_dict[node.state] = (node.parent.state, node.action)
         #path_dict.update(nodenode.parent)
         print(path_dict)
         
-     
+        print(node.state)
+        #print(node.parent.state)
 
         
         if node.state == goal:
@@ -133,6 +134,9 @@ def shortest_path(source, target):
             cells = []
             
             first_path = []
+            zero_list = []
+            zero_list.append(child.parent.state)
+            print(zero_list)
             #return node.state
             
             while node.parent is not None:
@@ -147,6 +151,7 @@ def shortest_path(source, target):
              #   node = node.parent   
             #path_list.append(start)
             print(node.state)
+            #print(node.parent.state)
             print(start.state)
             while node.state != start.state:
                 path_list.append(node.state)
@@ -166,7 +171,7 @@ def shortest_path(source, target):
             print(cells)
             solution = (actions, cells)
             first_path.append(first_tuple)
-            path_dict.update(first_path)
+            #path_dict.update(first_path)
             print(path_dict)
             #print(first_path)
             print(first_path)
@@ -180,8 +185,8 @@ def shortest_path(source, target):
         explored.add(node.action)
     
         
-        for movie_id, person_id in neighbors_for_person(source):
-                #print(person_id)
+        for movie_id, person_id in neighbors_for_person(node.state):
+            #print(person_id)
             if not frontier.contains_state(person_id) and person_id not in explored:
                 child = Node(state=person_id, parent = node, action = movie_id)
                 frontier.add(child)
@@ -195,24 +200,7 @@ def shortest_path(source, target):
                     #print(source_path)
                 path.append(source_path)
                 
-        #return path    
-                #first_path.append(source_path)
        
-                #
-        
-        
-                
-                    
-      
-        
-                
-        #node_2 = frontier.remove()
-                  
-                 
-        #node_2 = frontier.remove()
-        #print(node_2.state)
-        #return path
-    
                 
         
                     
