@@ -122,10 +122,10 @@ def shortest_path(source, target):
         else:
             path_dict[node.state] = (node.parent.state, node.action)
         #path_dict.update(nodenode.parent)
-        print(path_dict)
+        print(path_dict.keys())
+            
         
-        print(node.state)
-        #print(node.parent.state)
+        
 
         
         if node.state == goal:
@@ -135,8 +135,7 @@ def shortest_path(source, target):
             
             first_path = []
             zero_list = []
-            zero_list.append(child.parent.state)
-            print(zero_list)
+            
             #return node.state
             
             while node.parent is not None:
@@ -145,7 +144,8 @@ def shortest_path(source, target):
                 cells.append(node.state)
                 node = node.parent
                 
-            path_list = []
+                path_list = []
+                
            # while node != start:
             #    path_list.append(node)
              #   node = node.parent   
@@ -153,11 +153,11 @@ def shortest_path(source, target):
             print(node.state)
             #print(node.parent.state)
             print(start.state)
-            while node.state != start.state:
-                path_list.append(node.state)
-                node = path_dict[node][0]
-                path_list.append(start.state)
-                print(path_list)
+            #while node.state != start.state:
+             #   path_list.append(node.state)
+             #   node = path_dict[node][0]
+             #   path_list.append(start.state)
+           # print(path_list)
             #print(path_list)
                 #print(explored)
                 #print("found")
@@ -175,6 +175,7 @@ def shortest_path(source, target):
             print(path_dict)
             #print(first_path)
             print(first_path)
+            
             if len(first_path) == 0:
                 return path
             else:
