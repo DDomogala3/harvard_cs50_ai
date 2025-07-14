@@ -121,8 +121,14 @@ def shortest_path(source, target):
 
         else:
             path_dict[node.state] = (node.parent.state, node.action)
+        source = list(path_dict.keys())[0]
+        #print(source)
         #path_dict.update(nodenode.parent)
-        print(path_dict.keys())
+        for key,value in reversed(path_dict.items()):
+        	first_key = list(path_dict.keys())[0]
+        	if key == source:
+        		break
+        	print(f"Key: {key}")
             
         
         
