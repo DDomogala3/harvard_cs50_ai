@@ -124,11 +124,17 @@ def shortest_path(source, target):
         source = list(path_dict.keys())[0]
         #print(source)
         #path_dict.update(nodenode.parent)
+        key_list = []
         for key,value in reversed(path_dict.items()):
         	first_key = list(path_dict.keys())[0]
+        	key_list.append(key)
         	if key == source:
+        		#key_list.append(key)
         		break
+        		#key_list.append(key)
+        		
         	print(f"Key: {key}")
+        	print(key_list)
             
         
         
