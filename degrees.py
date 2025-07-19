@@ -121,25 +121,37 @@ def shortest_path(source, target):
 
         else:
             path_dict[node.state] = (node.parent.state, node.action)
-        source = list(path_dict.keys())[0]
+        source_key = list(path_dict.keys())[0]
+        target_state = list(path_dict.keys())[-1]
+        print(path_dict[target_state][0])
         #print(source)
         #path_dict.update(nodenode.parent)
         key_list = []
+        value_list = []
+        path_concept = []
         for key,value in reversed(path_dict.items()):
-        	first_key = list(path_dict.keys())[0]
+        	#first_key = list(path_dict.keys)[0]
         	key_list.append(key)
+        	value_list.append(value)
+                #path_concept.append(value)
         	if key == source:
         		#key_list.append(key)
         		break
         		#key_list.append(key)
+        	
         		
-        	print(f"Key: {key}")
-        	print(key_list)
-            
+                
         
+        #if target_key, source key 
+        #create for loop to find path
+        #add values in dictionary to path
+        #if actor A and actor B starred in movie X together
+        #add connection
+        #walk back path to find movie connections
         
-
-        
+        for i in key_list:
+            path_concept.append(path_dict[i])
+                
         if node.state == goal:
             print("found")
             actions = []
@@ -165,17 +177,10 @@ def shortest_path(source, target):
             print(node.state)
             #print(node.parent.state)
             print(start.state)
-            #while node.state != start.state:
-             #   path_list.append(node.state)
-             #   node = path_dict[node][0]
-             #   path_list.append(start.state)
-           # print(path_list)
-            #print(path_list)
-                #print(explored)
-                #print("found")
-                #print(first_tuple)
-                #return actions
-                #first_tuple = (node.action, node.state)
+            print("this is the key list %s." %(key_list))
+            print("this is the path concept %s." %(path_concept))
+            print("The path concept length is %d." % (len(path_concept)))
+                          
              
             actions.reverse()
             cells.reverse()
