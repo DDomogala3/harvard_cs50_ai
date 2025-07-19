@@ -123,7 +123,7 @@ def shortest_path(source, target):
             path_dict[node.state] = (node.parent.state, node.action)
         source_key = list(path_dict.keys())[0]
         target_state = list(path_dict.keys())[-1]
-        print(path_dict[target_state][0])
+        #print(path_dict[target_state][0])
         #print(source)
         #path_dict.update(nodenode.parent)
         key_list = []
@@ -148,7 +148,29 @@ def shortest_path(source, target):
         #if actor A and actor B starred in movie X together
         #add connection
         #walk back path to find movie connections
+        #from the duck
+
+        short_path = []
+        target_state = list(path_dict.keys())[-1]
+        #source_state = list(path_dict.keys())[0]
+        #print(target_state)
+      #  while target_state != source:
+         #   short_path.append(list(path_dict.keys())[-1])
+            #short_path.append(path_dict[target_state][0])
+         #   short_path.append(path_dict[target_state][1])
+        #    target_state = path_dict[target_state][0]
+        #    short_path.append(path_dict[target_state][0])
+        #    short_path.reverse()
+        short_path = []
+        target_state = list(path_dict.keys())[-1]
         
+        while target_state != source:
+            short_path.append(path_dict[target_state][1])
+            target_state = path_dict[target_state][0]
+            short_path.append(path_dict[target_state][0])
+            short_path.reverse()
+
+
         for i in key_list:
             path_concept.append(path_dict[i])
                 
@@ -180,6 +202,7 @@ def shortest_path(source, target):
             print("this is the key list %s." %(key_list))
             print("this is the path concept %s." %(path_concept))
             print("The path concept length is %d." % (len(path_concept)))
+            print("This is the short path %s." % (short_path))
                           
              
             actions.reverse()
