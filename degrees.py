@@ -170,7 +170,11 @@ def shortest_path(source, target):
             short_path.append(path_dict[target_state][0])
             short_path.reverse()
 
-
+        shorter_path = []
+        for i in key_list:
+            if path_dict[i][1] in short_path:
+                shorter_path.append(path_dict[i][0])
+                
         for i in key_list:
             path_concept.append(path_dict[i])
                 
@@ -203,6 +207,7 @@ def shortest_path(source, target):
             print("this is the path concept %s." %(path_concept))
             print("The path concept length is %d." % (len(path_concept)))
             print("This is the short path %s." % (short_path))
+            print("This is the shorter path %s." % (shorter_path))
                           
              
             actions.reverse()
