@@ -152,28 +152,24 @@ def shortest_path(source, target):
 
         short_path = []
         target_state = list(path_dict.keys())[-1]
-        #source_state = list(path_dict.keys())[0]
-        #print(target_state)
-      #  while target_state != source:
-         #   short_path.append(list(path_dict.keys())[-1])
-            #short_path.append(path_dict[target_state][0])
-         #   short_path.append(path_dict[target_state][1])
-        #    target_state = path_dict[target_state][0]
-        #    short_path.append(path_dict[target_state][0])
-        #    short_path.reverse()
-        short_path = []
+       
+        action_path = []
         target_state = list(path_dict.keys())[-1]
-        
+        print(target_state)
         while target_state != source:
-            short_path.append(path_dict[target_state][1])
+            
+            action_path.append(path_dict[target_state][1])
             target_state = path_dict[target_state][0]
-            short_path.append(path_dict[target_state][0])
-            short_path.reverse()
+            action_path.append(path_dict[target_state][0])
+            
+            action_path.reverse()
 
-        shorter_path = []
+        state_path = []
         for i in key_list:
-            if path_dict[i][1] in short_path:
-                shorter_path.append(path_dict[i][0])
+            if path_dict[i][1] in action_path:
+                state_path.append(path_dict[i][0])
+            elif i == target_state:
+                state_path.append(i)
                 
         for i in key_list:
             path_concept.append(path_dict[i])
@@ -206,8 +202,8 @@ def shortest_path(source, target):
             print("this is the key list %s." %(key_list))
             print("this is the path concept %s." %(path_concept))
             print("The path concept length is %d." % (len(path_concept)))
-            print("This is the short path %s." % (short_path))
-            print("This is the shorter path %s." % (shorter_path))
+            print("This is the action path %s." % (action_path))
+            print("This is the state path %s." % (state_path))
                           
              
             actions.reverse()
