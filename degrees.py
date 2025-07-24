@@ -151,28 +151,30 @@ def shortest_path(source, target):
         #from the duck
 
         short_path = []
-        target_state = list(path_dict.keys())[-1]
-       
+        
         action_path = []
         target_state = list(path_dict.keys())[-1]
-        print(target_state)
+        #print(target_state)
         while target_state != source:
             
             action_path.append(path_dict[target_state][1])
             target_state = path_dict[target_state][0]
-            action_path.append(path_dict[target_state][0])
+            action_path.append(path_dict[target_state][1])
             
             action_path.reverse()
 
         state_path = []
+       
         for i in key_list:
             if path_dict[i][1] in action_path:
                 state_path.append(path_dict[i][0])
+                #state_path.append(target)
             elif i == target_state:
-                state_path.append(i)
-                
-        for i in key_list:
-            path_concept.append(path_dict[i])
+                state_path.append(target_state)
+        #use list comprehension to combine paths
+        
+        state_path.append(target_state)
+       
                 
         if node.state == goal:
             print("found")
@@ -199,28 +201,30 @@ def shortest_path(source, target):
             print(node.state)
             #print(node.parent.state)
             print(start.state)
-            print("this is the key list %s." %(key_list))
-            print("this is the path concept %s." %(path_concept))
-            print("The path concept length is %d." % (len(path_concept)))
-            print("This is the action path %s." % (action_path))
-            print("This is the state path %s." % (state_path))
+            #print("this is the key list %s." %(key_list))
+            #print("this is the path concept %s." %(path_concept))
+            #print("The path concept length is %d." % (len(path_concept)))
+            #print("This is the action path %s." % (action_path))
+            #print("This is the state path %s." % (state_path))
                           
              
             actions.reverse()
             cells.reverse()
-            print(actions)
-            print(cells)
+            print("These are actions %s." % actions)
+            print("These are states %s." % cells)
             solution = (actions, cells)
+            shortest_path = [value for value in zip(actions,cells)]
+            print("The shortest path %s." % shortest_path)
             first_path.append(first_tuple)
             #path_dict.update(first_path)
-            print(path_dict)
+            #print(path_dict)
             #print(first_path)
-            print(first_path)
+            #print(first_path)
             
-            if len(first_path) == 0:
-                return path
+            if len(shortest_path) == 0:
+                return None
             else:
-               return first_path
+               return shortest_path
         #return first_path
                  
         explored.add(node.state)
