@@ -104,7 +104,7 @@ def shortest_path(source, target):
     path = []
     #print(goal)
     #the start node is always going to be the source
-    path_dict = {}
+   
     
     while frontier.empty() == False:
         if frontier.empty():
@@ -116,28 +116,13 @@ def shortest_path(source, target):
         
         num_explored += 1
         
-        if node.parent == None:
-            path_dict[node.state] = (None, node.action)
-
-        else:
-            path_dict[node.state] = (node.parent.state, node.action)
-        source_key = list(path_dict.keys())[0]
-        target_state = list(path_dict.keys())[-1]
+       
+        
         #print(path_dict[target_state][0])
         #print(source)
         #path_dict.update(nodenode.parent)
-        key_list = []
-        value_list = []
-        path_concept = []
-        for key,value in reversed(path_dict.items()):
-        	#first_key = list(path_dict.keys)[0]
-        	key_list.append(key)
-        	value_list.append(value)
-                #path_concept.append(value)
-        	if key == source:
-        		#key_list.append(key)
-        		break
-        		#key_list.append(key)
+      
+       
         	
         		
                 
@@ -150,30 +135,10 @@ def shortest_path(source, target):
         #walk back path to find movie connections
         #from the duck
 
-        short_path = []
         
-        action_path = []
-        target_state = list(path_dict.keys())[-1]
-        #print(target_state)
-        while target_state != source:
-            
-            action_path.append(path_dict[target_state][1])
-            target_state = path_dict[target_state][0]
-            action_path.append(path_dict[target_state][1])
-            
-            action_path.reverse()
-
-        state_path = []
-       
-        for i in key_list:
-            if path_dict[i][1] in action_path:
-                state_path.append(path_dict[i][0])
-                #state_path.append(target)
-            elif i == target_state:
-                state_path.append(target_state)
         #use list comprehension to combine paths
         
-        state_path.append(target_state)
+        
        
                 
         if node.state == goal:
@@ -238,13 +203,12 @@ def shortest_path(source, target):
                 frontier.add(child)
                 
                     #print(explored.state)
-                path = []
-                source_path = (child.action, child.state)
-                child_states = []
-                child_states.append(child.state)
+                
+                
+                
                     #print(child.state)
                     #print(source_path)
-                path.append(source_path)
+              
                 
        
                 
