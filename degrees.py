@@ -165,6 +165,8 @@ def shortest_path(source, target):
                 return None
             if len(shortest_path) == 0:
                 return None
+            elif shortest_path == None:
+                return None
             else:
                 return shortest_path
         #return first_path
