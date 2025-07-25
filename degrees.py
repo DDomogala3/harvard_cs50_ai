@@ -105,10 +105,11 @@ def shortest_path(source, target):
     #print(goal)
     #the start node is always going to be the source
    
-    
+   
     while frontier.empty() == False:
         if frontier.empty():
             raise Exception("no solution")
+            return None
         #Choose a node from the frontier
         node = frontier.remove()
         
@@ -118,25 +119,13 @@ def shortest_path(source, target):
         
        
         
-        #print(path_dict[target_state][0])
-        #print(source)
-        #path_dict.update(nodenode.parent)
       
        
         	
         		
                 
         
-        #if target_key, source key 
-        #create for loop to find path
-        #add values in dictionary to path
-        #if actor A and actor B starred in movie X together
-        #add connection
-        #walk back path to find movie connections
-        #from the duck
-
-        
-        #use list comprehension to combine paths
+       
         
         
        
@@ -152,44 +141,32 @@ def shortest_path(source, target):
             #return node.state
             
             while node.parent is not None:
-                first_tuple = (node.action,node.state)
+             
                 actions.append(node.action)
                 cells.append(node.state)
                 node = node.parent
                 
                 path_list = []
                 
-           # while node != start:
-            #    path_list.append(node)
-             #   node = node.parent   
-            #path_list.append(start)
-            print(node.state)
-            #print(node.parent.state)
-            print(start.state)
-            #print("this is the key list %s." %(key_list))
-            #print("this is the path concept %s." %(path_concept))
-            #print("The path concept length is %d." % (len(path_concept)))
-            #print("This is the action path %s." % (action_path))
-            #print("This is the state path %s." % (state_path))
+         
+           
+            
                           
              
             actions.reverse()
             cells.reverse()
-            print("These are actions %s." % actions)
-            print("These are states %s." % cells)
+            
             solution = (actions, cells)
             shortest_path = [value for value in zip(actions,cells)]
-            print("The shortest path %s." % shortest_path)
-            first_path.append(first_tuple)
-            #path_dict.update(first_path)
-            #print(path_dict)
-            #print(first_path)
-            #print(first_path)
+          
             
+          
+            if frontier.empty():
+                return None
             if len(shortest_path) == 0:
                 return None
             else:
-               return shortest_path
+                return shortest_path
         #return first_path
                  
         explored.add(node.state)
@@ -197,17 +174,12 @@ def shortest_path(source, target):
     
         
         for movie_id, person_id in neighbors_for_person(node.state):
-            #print(person_id)
+           
             if not frontier.contains_state(person_id) and person_id not in explored:
                 child = Node(state=person_id, parent = node, action = movie_id)
                 frontier.add(child)
                 
-                    #print(explored.state)
-                
-                
-                
-                    #print(child.state)
-                    #print(source_path)
+                    
               
                 
        
