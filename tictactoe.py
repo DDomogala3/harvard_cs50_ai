@@ -3,7 +3,7 @@ Tic Tac Toe Player
 """
 
 import math
-import count_board
+from tictac_ext import count_board
 X = "X"
 O = "O"
 EMPTY = None
@@ -22,11 +22,11 @@ def player(board):
     """
     Returns player who has the next turn on a board.
     """
-    if count_board.count_board(board)[0] > count_board.count_board(board)[1] and count_board.count_board(board)[3] > 9:
+    if count_board(board)[0] > count_board(board)[1] and count_board(board)[3] > 9:
         return O
-    elif count_board.count_board(board)[0] < count_board.count_board(board)[1] and count_board.count_board(board)[3] > 9:
+    elif count_board(board)[0] < count_board(board)[1] and count_board(board)[3] > 9:
         return X
-    elif count_board.count_board(board)[3] == 9:
+    elif count_board(board)[3] == 9:
         print("FULL")
     #returns which players turn it is
    # raise NotImplementedError
