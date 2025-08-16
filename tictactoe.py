@@ -4,6 +4,7 @@ Tic Tac Toe Player
 
 import math
 from tictac_ext import count_board
+import copy
 X = "X"
 O = "O"
 EMPTY = None
@@ -22,9 +23,13 @@ def player(board):
     """
     Returns player who has the next turn on a board.
     """
-    if count_board(board)[0] > count_board(board)[1] and count_board(board)[3] > 9:
+    if count_board(board)[3] == 0:
+        return X
+    elif count_board(board)[0] > count_board(board)[1] and count_board(board)[3] < 9:
         return O
-    elif count_board(board)[0] < count_board(board)[1] and count_board(board)[3] > 9:
+    elif count_board(board)[0] < count_board(board)[1] and count_board(board)[3] < 9:
+        return X
+    elif count_board(board)[0] == count_board(board)[1] and count_board(board)[3] < 9:
         return X
     elif count_board(board)[3] == 9:
         print("FULL")
@@ -37,9 +42,21 @@ def actions(board):
     """
     Returns set of all possible actions (i, j) available on the board.
     """
+    coordinate_set = []
+    for i,row in enumerate(board):
+        #print(i)
+        #print(row)
+        for y,z in enumerate(row):
+            if z == None:
+                print(i,y)
+                coordinate_set.append((i,y))
+    return coordinate_set
+                
+            
     #returns set of actions that can be taken on a board
     #each action should be reported as a tuple
-    raise NotImplementedError
+    
+    #raise NotImplementedError
 
 
 def result(board, action):
@@ -49,13 +66,25 @@ def result(board, action):
     #if action is not valid, raise an  exception
     #original board should be left unmodified
     
-    raise NotImplementedError
+    for i,row in enumerate(board):
+        for y,z in enumerate(row):
+            if (i,y) == action:
+                new_board = copy.deepcopy(board)
+                for i,row in enumerate(new_board):
+                    for y,z in enumerate(row):
+                        if (i,y) == action:
+                            print(player(board))
+                            new_board[i][y] = player(board)
+                        
+    return new_board
+    #raise NotImplementedError
 
 
 def winner(board):
     """
     Returns the winner of the game, if there is one.
     """
+    #check diagonals check elements at indices (0,0), (1,0), (2,2)
     #if no winner, return None
     raise NotImplementedError
 
