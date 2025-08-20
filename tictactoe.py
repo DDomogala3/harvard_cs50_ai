@@ -86,7 +86,25 @@ def winner(board):
     """
     #check diagonals check elements at indices (0,0), (1,0), (2,2)
     #if no winner, return None
-    raise NotImplementedError
+    top_left = (0,0)
+    middle = (1,0)
+    bottom_left = (2,2)
+    x_score = 0
+    for i, row in enumerate(board):
+        for y,z in enumerate(row):
+            if (y,i) == top_left and z == X:
+               x_score += 1
+            elif (y,i) == middle and z == X:
+                x_score += 1
+            elif (y,i) == bottom_left and z == X:
+                x_score += 1
+    if x_score == 3:
+        print("Player one wins!")
+    print(x_score)
+                
+                
+            
+    #raise NotImplementedError
 
 
 def terminal(board):
