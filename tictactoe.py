@@ -99,17 +99,15 @@ def winner(board):
     middle = (1,0)
     bottom_left = (2,2)
     x_score = 0
-    for i, row in enumerate(board):
-        for y,z in enumerate(row):
-            if (y,i) == top_left and z == X:
-               x_score += 1
-            elif (y,i) == middle and z == X:
-                x_score += 1
-            elif (y,i) == bottom_left and z == X:
-                x_score += 1
-    if x_score == 3:
-        print("Player one wins!")
-    print(x_score)           
+    o_score = 0          
+    diagonal_x = 0
+    diagonal_o = 0
+    if check_value(board, top_left)[0] == 1:
+        diagonal_x += 1
+    elif o_score in check_value(board, top_left)[1] == 1:
+        diagonal_o += 1
+    return diagonal_x, diagonal_o
+        
     
             
     #raise NotImplementedError
