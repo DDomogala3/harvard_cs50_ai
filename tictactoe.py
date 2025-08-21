@@ -79,7 +79,16 @@ def result(board, action):
     return new_board
     #raise NotImplementedError
 
-
+def check_value(board, position):
+    x_score = 0
+    o_score = 0
+    for i,row in enumerate(board):
+        for y,z in enumerate(row):
+            if (y,i) == position and z == X:
+                x_score += 1
+            elif (y,i) == position and z == O:
+                o_score += 1
+    return x_score, o_score
 def winner(board):
     """
     Returns the winner of the game, if there is one.
@@ -100,9 +109,8 @@ def winner(board):
                 x_score += 1
     if x_score == 3:
         print("Player one wins!")
-    print(x_score)
-                
-                
+    print(x_score)           
+    
             
     #raise NotImplementedError
 
