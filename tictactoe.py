@@ -84,9 +84,9 @@ def check_value(board, position):
     o_score = 0
     for i,row in enumerate(board):
         for y,z in enumerate(row):
-            if (y,i) == position and z == X:
+            if (i,y) == position and z == X:
                 x_score += 1
-            elif (y,i) == position and z == O:
+            elif (i,y) == position and z == O:
                 o_score += 1
     return x_score, o_score
 def winner(board):
@@ -96,17 +96,18 @@ def winner(board):
     #check diagonals check elements at indices (0,0), (1,0), (2,2)
     #if no winner, return None
     top_left = (0,0)
-    middle = (1,0)
+    middle = (1,1)
     bottom_left = (2,2)
+    
     x_score = 0
     o_score = 0          
     diagonal_x = 0
     diagonal_o = 0
-    if check_value(board, top_left)[0] == 1:
-        diagonal_x += 1
-    elif o_score in check_value(board, top_left)[1] == 1:
-        diagonal_o += 1
+    diagonal_x += check_value(board,top_left)[0]
+    diagonal_x += check_value(board,middle)[0]
+    diagonal_x += check_value(board,bottom_left)[0]
     return diagonal_x, diagonal_o
+    
         
     
             
