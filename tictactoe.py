@@ -99,6 +99,7 @@ def winner(board):
     middle = (1,1)
     bottom_left = (2,2)
     
+    
     x_score = 0
     o_score = 0          
     diagonal_x = 0
@@ -106,7 +107,10 @@ def winner(board):
     diagonal_x += check_value(board,top_left)[0]
     diagonal_x += check_value(board,middle)[0]
     diagonal_x += check_value(board,bottom_left)[0]
-    return diagonal_x, diagonal_o
+    if diagonal_x == 3:
+        return X
+    elif diagnonal_o == 3:
+        return O
     
         
     
