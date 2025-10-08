@@ -60,3 +60,6 @@ def count_board(board):
 print(count_board(board4))
 count_board(board2)
 
+
+
+

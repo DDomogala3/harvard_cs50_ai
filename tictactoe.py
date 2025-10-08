@@ -96,6 +96,8 @@ def winner(board):
     #check diagonals check elements at indices (0,0), (1,0), (2,2)
     #if no winner, return None
     top_left = (0,0)
+    middle_left = (1,0)
+    bottom_left = (2,0)
     left_middle = (0,1)
     left_bottom = (0,2)
     middle = (1,1)
@@ -108,22 +110,35 @@ def winner(board):
     diagonal_x = 0
     diagonal_o = 0
     first_row_x = 0
+    first_row_o = 0
     diagonal_x += check_value(board,top_left)[0]
     diagonal_x += check_value(board,middle)[0]
     diagonal_x += check_value(board,bottom_left)[0]
     diagonal_o += check_value(board,top_left)[1]
     diagonal_o += check_value(board,middle)[1]
     diagonal_o += check_value(board,bottom_left)[1]
-    first_row_o += check_value(board, first_row)[0]
-    
+    first_row_x += check_value(board, top_left)[0]
+    first_row_o += check_value(board, top_left)[1]
+    first_row_x += check_value(board, middle_left)[0]
+    first_row_o += check_value(board, middle_left)[1]
+    first_row_x += check_value(board, bottom_left)[0]
+    first_row_o += check_value(board, bottom_left)[1]
     if diagonal_x == 3:
         return X
     elif diagonal_o == 3:
         return O
     
         
+    diagonal_list = []
+    diagonal_list.append(check_value(board, top_left))
+    diagonal_list.append(check_value(board, middle))
+    diagonal_list.append(check_value(board, bottom_left))
+    diagonal_x = 0
+    diagonal_o = 0
+    for i in diagonal_list:
+        diagonal_x += i[0]
+        diagonal_o += i[1]
     
-            
     #raise NotImplementedError
 
 
