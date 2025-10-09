@@ -141,6 +141,32 @@ def winner(board):
     
     #raise NotImplementedError
 
+class Assess(object):
+    
+    ''''A way to keep score of the board'''
+    def init(self,board, position , tictac_list, tic_tac_score_x,tic_tac_score_y):
+        '''Features of the board and scoring.'''
+        self.board = board
+        self.tictac_list = tictac_list
+        self.tic_tac_score = tic_tac_score
+    def check_value(self,board, position):
+        x_score  = 0
+        o_score = 0
+        for i, row in enumerate(board):
+            for y, z in enumerate(row):
+                if (i,y) == position and z == X:
+                    x_score += 1
+                elif (i,y) == position and z == O:
+                    o_score += 1
+            return x_score, o_score
+    def score_value(self,tictac_list, tic_tac_score_x,tic_tac_score_y):
+        for i in diagnoal_list:
+            tic_tac_score_x += i[0]
+            tic_tac_score_y += i[1]
+            return tic_tac_score_x, tic_tac_score_y
+        
+        
+
 
 def terminal(board):
     """
