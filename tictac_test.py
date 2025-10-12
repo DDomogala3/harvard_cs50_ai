@@ -46,3 +46,9 @@ for i in diagonal_list:
     diagonal_o += i[1]
 print(diagonal_x)
 print(diagonal_o)
+diagonal_list = []
+diagonal_score_x = 0
+diagonal_score_o = 0
+#assess_instance = Assess(board4, top_left, diagonal_list, diagonal_score_x, diagonal_score_o)
+assess_instance = Assess()
+print(assess_instance.check_value(board4,top_left))
