@@ -160,7 +160,7 @@ class Assess(object):
                     o_score += 1
             return x_score, o_score
     def score_value(self,tictac_list, tic_tac_score_x,tic_tac_score_y):
-        for i in diagnoal_list:
+        for i in tictac_list:
             tic_tac_score_x += i[0]
             tic_tac_score_y += i[1]
             return tic_tac_score_x, tic_tac_score_y
