@@ -79,14 +79,22 @@ def result(board, action):
     return new_board
     #raise NotImplementedError
 
-def check_value(board, position):
+def check_value(board, position_list):
     x_score = 0
     o_score = 0
     for i,row in enumerate(board):
         for y,z in enumerate(row):
-            if (i,y) == position and z == X:
+            if (i,y) == position_list[0] and z == X:
                 x_score += 1
-            elif (i,y) == position and z == O:
+            elif (i,y) == position_list[0] and z == O:
+                o_score += 1
+            elif (i,y) == position_list[1] and z == X:
+                x_score += 1
+            elif (i,y) == position_list[1] and z == O:
+                o_score += 1
+            elif (i,y) == position_list[2] and z == X:
+                x_score += 1
+            elif (i,y) == position_list[2] and z == O:
                 o_score += 1
     return x_score, o_score
 def winner(board):
@@ -129,7 +137,8 @@ def winner(board):
         return O
     
         
-    diagonal_list = []
+    diagonal_list_test = [top_left,middle,bottom_left]
+    
     diagonal_list.append(check_value(board, top_left))
     diagonal_list.append(check_value(board, middle))
     diagonal_list.append(check_value(board, bottom_left))
