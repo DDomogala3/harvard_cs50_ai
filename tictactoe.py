@@ -109,44 +109,22 @@ def winner(board):
     left_middle = (0,1)
     left_bottom = (0,2)
     middle = (1,1)
-    bottom_left = (2,2)
+    bottom_middle = (2,1)
+    bottom_right = (2,2)
     
     
     
-    x_score = 0
-    o_score = 0          
-    diagonal_x = 0
-    diagonal_o = 0
-    first_row_x = 0
-    first_row_o = 0
-    diagonal_x += check_value(board,top_left)[0]
-    diagonal_x += check_value(board,middle)[0]
-    diagonal_x += check_value(board,bottom_left)[0]
-    diagonal_o += check_value(board,top_left)[1]
-    diagonal_o += check_value(board,middle)[1]
-    diagonal_o += check_value(board,bottom_left)[1]
-    first_row_x += check_value(board, top_left)[0]
-    first_row_o += check_value(board, top_left)[1]
-    first_row_x += check_value(board, middle_left)[0]
-    first_row_o += check_value(board, middle_left)[1]
-    first_row_x += check_value(board, bottom_left)[0]
-    first_row_o += check_value(board, bottom_left)[1]
-    if diagonal_x == 3:
-        return X
-    elif diagonal_o == 3:
-        return O
+    
+    #make three lists for each element
+    
     
         
-    diagonal_list_test = [top_left,middle,bottom_left]
+    diagonal_list_test = [top_left,middle,bottom_right]
+    first_row_list_test = [top_left, middle_left, bottom_middle]
     
-    diagonal_list.append(check_value(board, top_left))
-    diagonal_list.append(check_value(board, middle))
-    diagonal_list.append(check_value(board, bottom_left))
-    diagonal_x = 0
-    diagonal_o = 0
-    for i in diagonal_list:
-        diagonal_x += i[0]
-        diagonal_o += i[1]
+    return check_value(board,diagonal_list_test),check_value(board,first_row_list_test)
+  
+    
     
     #raise NotImplementedError
 

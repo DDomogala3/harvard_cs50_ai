@@ -45,3 +45,4 @@ diagonal_o = 0
 
 diagonal_list_test = [top_left,middle,bottom_left]
 print(check_value(board4, diagonal_list_test))
+print(winner(board4))
