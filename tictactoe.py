@@ -126,8 +126,16 @@ def winner(board):
     third_column_list_test = [right_top, right_middle,bottom_right]
     top_row_list_test = [top_left,left_middle,right_top]
     
+    value_list = []
+    value_list.append(check_value(board,diagonal_list_test))
+    value_list.append(check_value(board,first_column_list_test))
+    value_list.append(check_value(board,middle_column_list_test))
+    value_list.append(check_value(board,third_column_list_test))
+    value_list.append(check_value(board,top_row_list_test))
+   
     
-    return check_value(board,diagonal_list_test),check_value(board,first_column_list_test),check_value(board, middle_column_list_test),check_value(board, third_column_list_test), check_value(board,top_row_list_test)
+    
+    return value_list
   
     
     
