@@ -19,7 +19,7 @@ board5 = [["X", "X", "O"],
             ["O", "X", "O"],
             ["X", EMPTY, "O"]]
 
-board5 = [["O", "X", "O"],
+board6 = [["O", "X", "O"],
             ["O", "O", "O"],
             ["X", "X", "O"]]
 print("This is the next move %s." % player(board1))
@@ -46,3 +46,4 @@ diagonal_o = 0
 diagonal_list_test = [top_left,middle,bottom_left]
 print(check_value(board4, diagonal_list_test))
 print(winner(board4))
+print(winner(board5))

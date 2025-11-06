@@ -121,10 +121,12 @@ def winner(board):
     
         
     diagonal_list_test = [top_left,middle,bottom_right]
-    first_column_list_test = [top_left, middle_left, bottom_middle]
+    first_column_list_test = [top_left, middle_left, bottom_left]
     middle_column_list_test = [left_middle, middle,bottom_middle]
     third_column_list_test = [right_top, right_middle,bottom_right]
     top_row_list_test = [top_left,left_middle,right_top]
+    middle_row_list_test = [middle_left,middle,right_middle]
+    bottom_row_list_test = [bottom_left, bottom_middle,bottom_right]
     
     value_list = []
     value_list.append(check_value(board,diagonal_list_test))
@@ -132,6 +134,8 @@ def winner(board):
     value_list.append(check_value(board,middle_column_list_test))
     value_list.append(check_value(board,third_column_list_test))
     value_list.append(check_value(board,top_row_list_test))
+    value_list.append(check_value(board, middle_row_list_test))
+    value_list.append(check_value(board, bottom_row_list_test))
    
     
     
