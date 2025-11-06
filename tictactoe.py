@@ -137,11 +137,18 @@ def winner(board):
     value_list.append(check_value(board, middle_row_list_test))
     value_list.append(check_value(board, bottom_row_list_test))
    
-    
-    
-    return value_list
+    #assess if there is a winner
+    winner_list = []
+    for i in value_list:
+        if i[0] == 3:
+            return X
+        elif i[1] == 3:
+            return O
+         #   winner_list.append(i[1])
+        
+            
   
-    
+    #return winner_list
     
     #raise NotImplementedError
 
