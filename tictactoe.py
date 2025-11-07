@@ -185,7 +185,11 @@ def terminal(board):
     """
     #if game is over because all cells are filled, the funcion should return True
     #return false if game is still in progress
-    raise NotImplementedError
+    if count_board(board)[3] == 9:
+        return True
+    elif count_board(board)[3] < 9:
+        return False
+    #raise NotImplementedError
 
 
 def utility(board):
@@ -194,7 +198,13 @@ def utility(board):
     """
     #utility is 1 if X has won the game, utility is -1 if 0 has won the game
     #utility is called on board if terminal(board) is True
-    raise NotImplementedError
+    if winner(board) == X:
+        return 1
+    elif winner(board) == O:
+        return -1
+    else:
+        return 0
+    #raise NotImplementedError
 
 
 def minimax(board):
@@ -206,4 +216,14 @@ def minimax(board):
     #takes board as input and return optimal move for the player on that board
     #the move returned should be optimal action (i,j)
     #if the board is in terminal board, minimax should return None
+    #max
+    def Max_VALUE(board):
+        v = float('-inf')
+        if terminal(board):
+            return utility(board)
+        #V = float('-inf')
+        for action in actions(board):
+            v = Max(v, Min-Value(result(board,action))
+        return v
+        
     raise NotImplementedError

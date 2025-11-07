@@ -48,4 +48,8 @@ print(check_value(board4, diagonal_list_test))
 print(winner(board4))
 print(winner(board5))
 print(winner(board3))
+print(terminal(board4))
+print(terminal(board5))
+print(utility(board4))
+print(utility(board5))
 
