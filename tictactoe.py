@@ -112,6 +112,7 @@ def winner(board):
     middle = (1,1)
     bottom_middle = (2,1)
     bottom_right = (2,2)
+    top_middle = (0,1)
     
     
     
@@ -205,8 +206,44 @@ def utility(board):
     else:
         return 0
     #raise NotImplementedError
-
-
+#define MAX
+def MAX(board):
+    #find the best move for the maximizing player
+    max_utility = float('-inf')
+    if player(board) == X:
+        for action in actions(board):
+            
+            X_result = result(board,action)
+            #return max result
+            print(utility(X_result))
+            max_utility = max(max_utility, utility(X_result))
+        return max_utility
+    elif player(board) == O:
+        for action in actions(board):
+            O_result = result(board,action)
+            max_utility = max(max_utility, utility(O_result))
+            
+        return max_utility
+    
+        
+def MIN(board):
+    min_utility = float('inf')
+    if player(board) == X:
+        for action in actions(board):
+            
+            X_result = result(board,action)
+            #return max result
+            min_utility = min(min_utility, utility(X_result))
+        return min_utility
+    elif player(board) == O:
+        for action in actions(board):
+            O_result = result(board,action)
+            min_utility = min(min_utility, utility(O_result))
+            
+        return min_utility
+  
+        
+    #return maximum value
 def minimax(board):
     """
     Returns the optimal action for the current player on the board.
@@ -223,7 +260,7 @@ def minimax(board):
             return utility(board)
         #V = float('-inf')
         for action in actions(board):
-            v = Max(v, Min-Value(result(board,action))
+            v = Max(v, Min-Value(result(board,action)))
         return v
         
     raise NotImplementedError

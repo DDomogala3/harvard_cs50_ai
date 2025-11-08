@@ -22,6 +22,15 @@ board5 = [["X", "X", "O"],
 board6 = [["O", "X", "O"],
             ["O", "O", "O"],
             ["X", "X", "O"]]
+board7 = [["O", EMPTY, "O"],
+            ["O", "O", "O"],
+            ["X", "X", EMPTY]]
+board8 = [["O", EMPTY, EMPTY],
+            [EMPTY, "O", "O"],
+            ["X", "X", EMPTY]]
+board9 = [["O", EMPTY, EMPTY],
+            [EMPTY, "X", "O"],
+            ["O", "X", EMPTY]]
 print("This is the next move %s." % player(board1))
 player(initial_state())
 actions(board4)
@@ -50,6 +59,11 @@ print(winner(board5))
 print(winner(board3))
 print(terminal(board4))
 print(terminal(board5))
-print(utility(board4))
-print(utility(board5))
 
+
+print("MAX board 7: %d " % MAX(board7))
+print("MIN board 7: %d" % MIN(board7))
+print("MIN board 8: %d" % MIN(board8))
+print("MAX board 8: %d" % MAX(board8))
+print("MIN board 9: %d" % MIN(board9))
+print("MAX board 9: %d" % MAX(board9))
