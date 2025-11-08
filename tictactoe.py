@@ -254,13 +254,23 @@ def minimax(board):
     #the move returned should be optimal action (i,j)
     #if the board is in terminal board, minimax should return None
     #max
-    def Max_VALUE(board):
-        v = float('-inf')
-        if terminal(board):
-            return utility(board)
-        #V = float('-inf')
-        for action in actions(board):
-            v = Max(v, Min-Value(result(board,action)))
-        return v
-        
-    raise NotImplementedError
+  #  def Max_VALUE(board):
+   #     v = float('-inf')
+    #    if terminal(board) == False:
+       #     return utility(board)
+    #    else:
+    #        return None 
+     #   V = float('-inf')
+     #   for action in actions(board):
+     #       v = max(v, MIN(result(board,action)))
+    #    return v
+    for action in actions(board):
+        new_action = action
+        test_result = result(board,action)
+    if MAX(test_result) >= utility(test_result):
+        print("Max test result %d" % MAX(test_result))
+        print("Utility test result %d." % utility(test_result))
+        for action in actions(test_result):
+            return action
+    #return (MAX(board))    
+    #raise NotImplementedError

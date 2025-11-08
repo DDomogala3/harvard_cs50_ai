@@ -22,13 +22,13 @@ board5 = [["X", "X", "O"],
 board6 = [["O", "X", "O"],
             ["O", "O", "O"],
             ["X", "X", "O"]]
-board7 = [["O", EMPTY, "O"],
-            ["O", "O", "O"],
+board7 = [["O", "X", EMPTY],
+            ["O", "O", "X"],
             ["X", "X", EMPTY]]
 board8 = [["O", EMPTY, EMPTY],
             [EMPTY, "O", "O"],
             ["X", "X", EMPTY]]
-board9 = [["O", EMPTY, EMPTY],
+board9 = [["O", "O", "X"],
             [EMPTY, "X", "O"],
             ["O", "X", EMPTY]]
 print("This is the next move %s." % player(board1))
@@ -67,3 +67,5 @@ print("MIN board 8: %d" % MIN(board8))
 print("MAX board 8: %d" % MAX(board8))
 print("MIN board 9: %d" % MIN(board9))
 print("MAX board 9: %d" % MAX(board9))
+
+print(minimax(board7))
