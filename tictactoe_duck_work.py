@@ -69,14 +69,16 @@ def result(board, action):
     for i,row in enumerate(board):
         for y,z in enumerate(row):
             if (i,y) == action:
-                new_board = copy.deepcopy(board)
-                for i,row in enumerate(new_board):
-                    for y,z in enumerate(row):
-                        if (i,y) == action:
-                            print(player(board))
-                            new_board[i][y] = player(board)
+                #new_board = copy.deepcopy(board)
+                copy_board = copy.deepcopy(board)
+                copy_board[i][y] = player(copy_board)
+                #for i,row in enumerate(board):
+                   # for y,z in enumerate(row):
+                     #   if (i,y) == action:
+                        #    print(player(board))
+                           # new_board[i][y] = player(board)
                         
-    return new_board
+    return copy_board
     #raise NotImplementedError
 
 def check_value(board, position_list):
