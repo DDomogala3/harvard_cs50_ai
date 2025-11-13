@@ -103,6 +103,8 @@ def winner(board):
     """
     #check diagonals check elements at indices (0,0), (1,0), (2,2)
     #if no winner, return None
+
+        
     top_left = (0,0)
     middle_left = (1,0)
     bottom_left = (2,0)
@@ -113,40 +115,31 @@ def winner(board):
     bottom_middle = (2,1)
     bottom_right = (2,2)
     top_middle = (0,1)
-    
-    
-    
-    
-    #make three lists for each element
-    
-    
-        
     diagonal_list_test = [top_left,middle,bottom_right]
+    opposite_diagonal_list_test = [right_top,middle,bottom_left]
     first_column_list_test = [top_left, middle_left, bottom_left]
     middle_column_list_test = [left_middle, middle,bottom_middle]
     third_column_list_test = [right_top, right_middle,bottom_right]
     top_row_list_test = [top_left,left_middle,right_top]
+    
     middle_row_list_test = [middle_left,middle,right_middle]
     bottom_row_list_test = [bottom_left, bottom_middle,bottom_right]
     
+    
     value_list = []
     value_list.append(check_value(board,diagonal_list_test))
+    value_list.append(check_value(board,opposite_diagonal_list_test))
     value_list.append(check_value(board,first_column_list_test))
     value_list.append(check_value(board,middle_column_list_test))
     value_list.append(check_value(board,third_column_list_test))
     value_list.append(check_value(board,top_row_list_test))
     value_list.append(check_value(board, middle_row_list_test))
     value_list.append(check_value(board, bottom_row_list_test))
-   
-    #assess if there is a winner
-    winner_list = []
     for i in value_list:
         if i[0] == 3:
             return X
         elif i[1] == 3:
             return O
-         #   winner_list.append(i[1])
-        
             
   
     #return winner_list
@@ -225,20 +218,14 @@ def MAX(board):
          
 def MIN(board):
     min_utility = float('inf')
-    if player(board) == X:
-        for action in actions(board):
-            
-            X_result = result(board,action)
-            #return max result
-            min_utility = min(min_utility, utility(X_result))
-        return min_utility
-    elif player(board) == O:
-        min_utility = float('-inf')
-        for action in actions(board):
-            O_result = result(board,action)
-            min_utility = max(min_utility, utility(O_result))
-            
-        return min_utility, action
+    for action in actions(board):
+        O_result = result(board,action)
+
+        print("This is the utility function %d." % utility(O_result))
+        if min_utility > utility(O_result):
+            min_utility = utility(O_result)
+            best_action = action
+    return min_utility, best_action
   
         
     #return maximum value
