@@ -207,13 +207,13 @@ def MAX(board):
     for action in actions(board):
         X_result = result(board,action)
             #return max result
-        print("This is the utility function %d." % utility(X_result))  
+        #print("This is the utility function %d." % utility(X_result))  
         #max_utility = max(max_utility, utility(X_result))
         #best_action = action   
         if max_utility < utility(X_result):
             max_utility = utility(X_result)
             best_action = action
-    return max_utility, best_action  
+    return best_action  
     
          
 def MIN(board):
@@ -221,11 +221,11 @@ def MIN(board):
     for action in actions(board):
         O_result = result(board,action)
 
-        print("This is the utility function %d." % utility(O_result))
+        #print("This is the utility function %d." % utility(O_result))
         if min_utility > utility(O_result):
             min_utility = utility(O_result)
             best_action = action
-    return min_utility, best_action
+    return best_action
   
         
     #return maximum value
@@ -233,36 +233,13 @@ def minimax(board):
     """
     Returns the optimal action for the current player on the board.
     """
-    #positive_infinity = float('inf')
-    #negative_infinity = float('-inf')
-    #takes board as input and return optimal move for the player on that board
-    #the move returned should be optimal action (i,j)
-    #if the board is in terminal board, minimax should return None
-    #max
-  #  def Max_VALUE(board):
-   #     v = float('-inf')
-    #    if terminal(board) == False:
-       #     return utility(board)
-    #    else:
-    #        return None 
-     #   V = float('-inf')
-     #   for action in actions(board):
-     #       v = max(v, MIN(result(board,action)))
-    #    return v
-    for action in actions(board):
+    #start with assessing next player and if board is full
+    #print(player(board))
+    if player(board) == X:
+        return MAX(board)
+    elif player(board) == O:
+        return MIN(board)
+    elif terminal(board) == True:
+        return None
+    
         
-        test_result = result(board,action)
-        if MAX(test_result) >= utility(test_result):
-            print("MAX test result %d." % MAX(test_result))
-            print("utility test result %d." % utility(test_result))
-            new_action = action
-            return new_action
-        
-            
-  #  if MAX(test_result) >= utility(test_result):
-    #    print("Max test result %d" % MAX(test_result))
-      #  print("Utility test result %d." % utility(test_result))
-      #  for action in actions(test_result):
-       #     return action
-    #return (MAX(board))    
-    #raise NotImplementedError
