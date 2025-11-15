@@ -212,14 +212,17 @@ def MAX(board,alpha,beta):
             #return max result
        
         #best_action = action
-        min_move = MIN(X_result,float('-inf'),float('inf'))
+        min_move = MIN(X_result,alpha,beta)
         #print(X_result)
         
         if max_utility < min_move:
            
-            
+            #update max_utility with min_move
             max_utility = min_move
+            #update alpha
             alpha = max_utility
+            #perform alpha beta pruning
+            
             if alpha >= beta:
                 break
             
@@ -236,12 +239,15 @@ def MIN(board,alpha,beta):
         return utility(board)
     for action in actions(board):
         O_result = result(board,action)
-        max_move = MAX(O_result,float('-inf'),float('inf'))
-        #max_result = result(O_result,max_move)
-        #print("This is the utility function %d." % utility(O_result))
+        max_move = MAX(O_result,alpha,beta)
+        #max_move = MAX(O_result,float('-inf'),float('inf'))
         if min_utility > max_move:
+            #update min utility
             min_utility = max_move
+            #update beta
             beta = min_utility
+           
+            #perform alpha beta pruning, prun beta
             if beta <= alpha:
                 break
         
@@ -255,7 +261,7 @@ def minimax(board):
     Returns the optimal action for the current player on the board.
     """
     #start with assessing next player and if board is full
-    #print(player(board))
+   
     max_utility = float('-inf')
     min_utility = float('inf')
     new_action = None
