@@ -2,7 +2,7 @@ import pygame
 import sys
 import time
 
-import tictactoe_duck_work as ttt
+import tictactoe_duck_work_min_max as ttt
 
 pygame.init()
 size = width, height = 600, 400

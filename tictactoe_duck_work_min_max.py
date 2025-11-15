@@ -48,7 +48,7 @@ def actions(board):
         #print(row)
         for y,z in enumerate(row):
             if z == None:
-                print(i,y)
+               
                 coordinate_set.append((i,y))
     return coordinate_set
                 
@@ -204,30 +204,34 @@ def utility(board):
 #define MAX
 def MAX(board,alpha,beta):
     #find the best move for the maximizing player
-    
+    if terminal(board) == True:
+        return utility(board)
     max_utility = float('-inf')
     for action in actions(board):
         X_result = result(board,action)
             #return max result
        
         #best_action = action
-        min_move = MIN(X_result)
+        min_move = MIN(X_result,float('-inf'),float('inf'))
         #print(X_result)
-        print(min_move)
+        
         if max_utility < min_move:
            
-            best_action = action
+            
             max_utility = min_move
+            alpha = max_utility
+            if alpha >= beta:
+                break
+            
             
             
    
     return max_utility
     
          
-def MIN(board):
+def MIN(board,alpha,beta):
     min_utility = float('inf')
-    alpha = None
-    beta = None
+    
     if terminal(board) == True:
         return utility(board)
     for action in actions(board):
@@ -235,12 +239,12 @@ def MIN(board):
         max_move = MAX(O_result,float('-inf'),float('inf'))
         #max_result = result(O_result,max_move)
         #print("This is the utility function %d." % utility(O_result))
-        if min_utility > utility(O_result):
-            min_utility = utility(O_result)
-            best_action = action
-        elif min_utility > max_move:
+        if min_utility > max_move:
             min_utility = max_move
-            best_action = action
+            beta = min_utility
+            if beta <= alpha:
+                break
+        
         
     return min_utility
   
@@ -252,17 +256,24 @@ def minimax(board):
     """
     #start with assessing next player and if board is full
     #print(player(board))
-    
+    max_utility = float('-inf')
+    min_utility = float('inf')
+    new_action = None
     if player(board) == X:
         for action in actions(board):
             X_result = result(board,action)
-            if MAX(X_result,float('-inf'),float('inf')) > utility(X_result):
+            max_score = MAX(X_result,float('-inf'),float('inf'))
+            if max_score > max_utility:
+                max_utility = max_score
                 new_action = action
         return new_action
+    
     elif player(board) == O:
         for action in actions(board):
             O_result = result(board,action)
-            if MIN(O_result) < utility(O_result):
+            min_score = MIN(O_result,float('-inf'),float('inf'))
+            if min_score < min_utility:
+                min_utility = min_score
                 new_action = action
         return new_action
     elif terminal(board) == True:

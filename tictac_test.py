@@ -1,5 +1,5 @@
 #from tictactoe import *
-from tictactoe_duck_work import *
+from tictactoe_duck_work_min_max import *
 from tictac_ext import count_board
 EMPTY = None
 X = "X"
@@ -12,7 +12,7 @@ board2 = [[EMPTY, "X", "O"],
             [EMPTY, EMPTY, EMPTY]]
 board3 = [[EMPTY, "X", "O"],
             [EMPTY, EMPTY, EMPTY],
-            [EMPTY, EMPTY, EMPTY]]
+            [EMPTY, "O", EMPTY]]
 board4 = [["X", "X", "O"],
             ["O", "X", "O"],
             ["X", "X", "X"]]
@@ -62,37 +62,7 @@ top_middle = (0,1)
 
 diagonal_x = 0
 diagonal_o = 0
-#for i in diagonal_list:
-#    diagonal_x += i[0]
-#    diagonal_o += i[1]
-#print(diagonal_x)
-#print(diagonal_o)
-#testing
 
-
-
-#print("MAX board 9: %d" % MAX(board9))
-
-#print(minimax(board7))
-#print(minimax(board8))
-#print(utility(board8))
-#print(MAX(board11))
-#print(utility(board10))
-
-#print("Winner board 11 %s." % winner(board11))
-#print(check_value(board11,opposite_diagonal_list_test))
-#print(player(board10))
-
-
-
-
-
-#print(winner(board11))
-#print(MAX(board8))
-#print(MAX(board12))
-#print(MAX(board10))
-#print(MAX(board8))
-#print(MIN(board7))
-print(minimax(board8))
-print(minimax(board10))
-print(minimax(board4))
+#print(MAX(board3,float('-inf'),float('inf')))
+#print(MIN(board4))
+print(minimax(board3))
