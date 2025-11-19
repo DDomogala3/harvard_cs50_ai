@@ -237,6 +237,7 @@ def MIN(board,alpha,beta):
     
     if terminal(board) == True:
         return utility(board)
+    new_action = None
     for action in actions(board):
         O_result = result(board,action)
         max_move = MAX(O_result,alpha,beta)
@@ -246,7 +247,8 @@ def MIN(board,alpha,beta):
             min_utility = max_move
             #update beta
             beta = min_utility
-           
+            new_action = action
+            #print(new_action)
             #perform alpha beta pruning, prun beta
             if beta <= alpha:
                 break
@@ -264,22 +266,32 @@ def minimax(board):
    
     max_utility = float('-inf')
     min_utility = float('inf')
-    new_action = None
+   
     if player(board) == X:
+        new_action = None
         for action in actions(board):
             X_result = result(board,action)
             max_score = MAX(X_result,float('-inf'),float('inf'))
+            min_score = MIN(X_result,float('-inf'),float('inf'))
             if max_score > max_utility:
                 max_utility = max_score
+                new_action = action
+            elif min_score > max_utility:
+                max_utility = min_score
                 new_action = action
         return new_action
     
     elif player(board) == O:
+        new_action = None
         for action in actions(board):
             O_result = result(board,action)
             min_score = MIN(O_result,float('-inf'),float('inf'))
+            max_score = MAX(O_result,float('-inf'),float('inf'))
             if min_score < min_utility:
                 min_utility = min_score
+                new_action = action
+            elif max_score < min_utility:
+                min_utility = max_score
                 new_action = action
         return new_action
     elif terminal(board) == True:
