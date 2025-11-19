@@ -107,16 +107,19 @@ def winner(board):
     #if no winner, return None
 
         
+      #column one    
     top_left = (0,0)
     middle_left = (1,0)
     bottom_left = (2,0)
+    #column two
     left_middle = (0,1)
-    right_top = (0,2)
-    right_middle = (1,2)
     middle = (1,1)
     bottom_middle = (2,1)
-    bottom_right = (2,2)
-    top_middle = (0,1)
+    #third column
+    right_top = (0,2)
+    right_middle = (1,2)
+  	bottom_right = (2,2
+    #create column lists                
     diagonal_list_test = [top_left,middle,bottom_right]
     opposite_diagonal_list_test = [right_top,middle,bottom_left]
     first_column_list_test = [top_left, middle_left, bottom_left]
