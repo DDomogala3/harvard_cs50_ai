@@ -41,6 +41,9 @@ board11 = [[EMPTY, "O", "X"],
 board12 = [[EMPTY, "O", "X"],
             [EMPTY, EMPTY, "O"],
             ["X", "O", "O"]]
+board13 = [[EMPTY, "X", "O"],
+            [EMPTY, "O", EMPTY],
+            [EMPTY, "X", EMPTY]]
 #print("This is the next move %s." % player(board1))
 player(initial_state())
 actions(board4)
@@ -66,3 +69,4 @@ diagonal_o = 0
 #print(MAX(board3,float('-inf'),float('inf')))
 #print(MIN(board4))
 print(minimax(board3))
+
