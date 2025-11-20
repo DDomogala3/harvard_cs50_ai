@@ -210,11 +210,6 @@ def MAX(board,alpha,beta):
     new_action = None
     for action in actions(board):
         X_result = result(board,action)
-            #return max result
-       
-        #best_action = action
-        #min_move = MIN(X_result,alpha,beta)
-        #print(X_result)
         
        
         if max_utility < MIN(X_result,alpha,beta):
