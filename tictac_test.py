@@ -1,5 +1,5 @@
 #from tictactoe import *
-from tictactoe_duck_work_min_max_11202025 import *
+from tictactoe_duck_work_min_max_11212025 import *
 from tictac_ext import count_board
 EMPTY = None
 X = "X"
@@ -44,6 +44,12 @@ board12 = [["X", "O", "X"],
 board13 = [["X", EMPTY, "O"],
             [EMPTY, "O", EMPTY],
             [EMPTY, EMPTY, "X"]]
+board14 = [["X", "X", "O"],
+            [EMPTY, "O", EMPTY],
+            [EMPTY, EMPTY, EMPTY]]
+board15 = [[EMPTY, EMPTY, EMPTY],
+            [EMPTY, "O", EMPTY],
+            ["O", "X", "X"]]
 #print("This is the next move %s." % player(board1))
 player(initial_state())
 actions(board4)
@@ -68,18 +74,19 @@ diagonal_o = 0
 
 #print(MAX(board12,float('-inf'),float('inf')))
 #print(MIN(board4))
-print(MIN(board3,float('-inf'),float('inf')))
+print(MIN(board14,float('-inf'),float('inf')))
+print(MAX(board14,float('-inf'),float('inf')))
 #print(MAX(board12,float('-inf'),float('inf')))
-print(minimax(board3))
+print(minimax(board14))
 #print(actions(board13))
 #print(player(board13))
 #print(MAX(board13,float('-inf'),float('inf')))
 
-for action in actions(board13):
+for action in actions(board14):
     X_result = result(board13,action)
     print(X_result,utility(X_result))
-for action in actions(board12):
-    X_result = result(board12,action)
-    min_utility = float('inf')
-    MIN_v = min(min_utility,utility(X_result))
-print(MIN_v)
+#for action in actions(board12):
+#    X_result = result(board12,action)
+ #   min_utility = float('inf')
+#    MIN_v = min(min_utility,utility(X_result))
+#print(MIN_v)
