@@ -215,23 +215,14 @@ def MAX(board,alpha,beta):
     max_list = []
     for action in actions(board):
         X_result = result(board,action)
-            #return max result
-        #print(X_result)
-        #best_action = action
-        X_result = result(board,action)
-        #print(X_result)
-        #min_ut = MIN(X_result,float('-inf'),float('inf'))
-        #print(min_ut,max_utility)
+           
         MAX_v = MIN(X_result,float('-inf'),float('inf'))[0]
-        #print(MAX_v)
-        #print(MAX_v)
+     
         if max_utility < MAX_v:
-            #print(max_utility)
+          
             max_utility = MAX_v
             new_action = action
-            
-        
-     
+    
     return max_utility, new_action
     
          
@@ -245,10 +236,9 @@ def MIN(board,alpha,beta):
         new_action = None
         O_result = result(board,action)
         min_utility = float('inf')
-        #MAX_o = MAX(O_result,float('-inf'),float('inf'))
-        #print(MAX(O_result,float('-inf'),float('inf'))[0])
+       
         MIN_v = min(min_utility,MAX(O_result,float('-inf'),float('inf'))[0])
-        #MAX_v = max(min_utility,MIN(O_result,float('-inf'),float('inf'))[0])
+     
         if min_utility > MIN_v:
             min_utility = MIN_v
             new_action = action
