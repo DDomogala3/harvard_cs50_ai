@@ -209,37 +209,43 @@ def utility(board):
 def MAX(board):
     #find the best move for the maximizing player
     if terminal(board) == True:
-        return utility(board)
+        return utility(board), None
     max_utility = float('-inf')
    
-
+    new_action = None
     for action in actions(board):
         X_result = result(board,action)
            
-        MAX_v = max(max_utility,MIN(X_result)
-    return max_utility
+        MAX_v = max(max_utility,MIN(X_result)[0])
+        if max_utility < MAX_v:
+            max_utility = MAX_v
+            new_action = action
+            
+    return max_utility,new_action
 #trying the discord way     
 def MIN(board):
     
     
     if terminal(board) == True:
-        return utility(board)
-
+        return utility(board), None
+    min_utility = float('inf')
+    new_action = None
     for action in actions(board):
     
         O_result = result(board,action)
-        min_utility = float('inf')
-       
-        MIN_v = min(min_utility,MAX(O_result))
+        MIN_V = min(min_utility,MAX(O_result)[0])
+        if min_utility > MIN_V:
+            min_utility = MIN_V
+            new_action = action
+            
      
-        if min_utility > MIN_v:
-            min_utility = MIN_v
+    return min_utility,new_action
             
       
   
         
         #print(MAX_o)
-    return min_utility
+   
 def mutumbo(board,player):
 	if player == "O":
 		for action in actions(board):
@@ -266,37 +272,40 @@ def minimax(board):
     #start with assessing next player and if board is full
     if terminal(board) == True:
     	return None
-    max_utility = float('-inf')
-    min_utility = float('inf')
-    new_action = None
-
-    for action in actions(board):
-    	X_result = result(board,action)
-    	current_utility = utility(X_result)
-    		#how do I block the oponent from getting a terminal move?
-    		
-    		
-    	if MAX(X_result) > max_utility:
-    		max_utility = MAX(X_result)
-    		new_action = action
-    	return new_action
-        	
+    #max_utility = float('-inf')
+  #  min_utility = float('inf')
+  #  new_action = None
+    
+    if player(board) == X:
+        return MAX(board)[1]
+       # new_action = None
+       # max_utility = float('-inf')
+        #for action in actions(board):
+        #    score = MIN(result(board,action))[0]
+        #    if score > max_utility:
+                        #max_utlity = score
+        #                new_action = action
+         #   return new_action
+    elif player(board) == O:
+        return MIN(board)[1]
+      # new_action = None
+      #  min_utility = float('inf')
+      #  for action in actions(board):
+           # score = MAX(result(board,action))[0]
+      #      if score < min_utility:
+      #                  min_utility = score
+          #              new_action = action
+       #     return new_action
+  #  if player(board) == X:
+    #    return mutumbo("X",board)
+  #  elif player(board) == O:
+    #    return mutumbo("O",board)
+      
+            
         	
         
             
 
-    elif player(board) == O:
-    	new_action = None
-    	for action in actions(board):
-    		O_result = result(board,action)
-    		if MIN(O_result,float('-inf'),float('inf'))[0] < min_utility:
-    			min_utility = MIN(O_result,float('-inf'),float('inf'))[0]
-    			new_action = action
-    	return new_action
-    		
-    	#return MIN(O_result,float('-inf'),float('inf'))[1]
-          
-    elif terminal(board) == True:
-        return None
+   
     
         

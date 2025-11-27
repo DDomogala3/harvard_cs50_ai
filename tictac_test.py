@@ -1,5 +1,5 @@
 #from tictactoe import *
-from tictactoe_duck_work_min_max_11232025 import *
+from tictactoe_discord import *
 from tictac_ext import count_board
 EMPTY = None
 X = "X"
@@ -74,10 +74,10 @@ diagonal_o = 0
 
 #print(MAX(board12,float('-inf'),float('inf')))
 #print(MIN(board4))
-print(MIN(board14,float('-inf'),float('inf')))
-print(MAX(board14,float('-inf'),float('inf')))
+print(MIN(board14))
+print(MAX(board14))
 #print(MAX(board12,float('-inf'),float('inf')))
-print(minimax(board14))
+print(minimax(board15))
 #print(actions(board13))
 #print(player(board13))
 #print(MAX(board13,float('-inf'),float('inf')))
@@ -90,35 +90,3 @@ for action in actions(board14):
  #   min_utility = float('inf')
 #    MIN_v = min(min_utility,utility(X_result))
 #print(MIN_v)
-#mutumbo
-print(actions(board15))
-for action in actions(board14):
-	#print(utility(result(board15,action)))
-	X_result = result(board14,action)
-	#save new_board
-	if utility(X_result) == 0:
-		O_result = result(X_result,action)
-	if utility(O_result) == -1:
-		print(O_result,action)
-def mutumbo(board,player):
-	if player == "O":
-		for action in actions(board):
-			O_result = result(board,action)
-			if utility(O_result) == 0:
-				X_result = result(O_result,action)
-				#me no likey
-			if utility(X_result) == 1:
-			
-				return X_result,action
-	elif player == "X":
-		for action in actions(board):
-			X_result = result(board,action)
-	#save new_board
-			if utility(X_result) == 0:
-				O_result = result(X_result,action)
-			if utility(O_result) == -1:
-				
-				return (O_result,action)
-						
-print(mutumbo(board13,"X"))
-print(minimax(board5))
